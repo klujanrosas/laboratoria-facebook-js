@@ -28,8 +28,8 @@ html, body {
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 3px 3px #E0E2EF;
-  border-radius: 5px;
+  box-shadow: 0 3px 3px #2E4677;
+  /* border-radius: 5px; */
 }
 
 .login-form__input-container {
