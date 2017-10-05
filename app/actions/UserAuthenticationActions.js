@@ -42,13 +42,19 @@ export const loginSubmitFailure = (error) => {
 }
 
 export const attemptLogin = (username, password) => {
-  return async (dispatch) => {
-    dispatch(loginSubmit())
-    try {
-      const data = await API.login({ username, password })
-      dispatch(loginSubmitSuccess(data))
-    } catch (error) {
-      dispatch(loginSubmitFailure(error.message))
+  console.log('attempting login with', { username, password })
+  if (username.errors.length === 0 && password.errors.length === 0) {
+    return async (dispatch) => {
+      dispatch(loginSubmit())
+      try {
+        const data = await API.login({ username: username.value, password: password.value })
+        dispatch(loginSubmitSuccess(data))
+      } catch (error) {
+        dispatch(loginSubmitFailure(error.message))
+      }
     }
+  }
+  return dispatch => {
+    dispatch(loginSubmitFailure('Primero arregle los errores mencionados.'))
   }
 }

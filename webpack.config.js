@@ -38,7 +38,7 @@ module.exports = {
           use: [
             {
               loader: 'css-loader',
-            },            
+            },
             {
               loader: 'resolve-url-loader',
             },
@@ -83,5 +83,9 @@ module.exports = {
       '.js',
       '.jsx'
     ]
+  },
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './'
   }
 }

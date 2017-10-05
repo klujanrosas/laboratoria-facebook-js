@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { passwordInputChange, usernameInputChange, attemptLogin } from '../actions'
+import API from '../api'
 
 import { Container } from '../components/Container'
 import { LoginForm } from '../components/Form'
@@ -18,16 +19,36 @@ class LoginScreen extends Component {
     this.props.usernameInputChange(e.nativeEvent.target.value)
   }
 
+  handleLoginAttempt = () => {
+    this.props.attemptLogin(
+      this.props.username,
+      this.props.password,
+    )
+  }
+
+  componentWillUpdate() {
+    if (API.getUserSession()) {
+      this.props.history.push('/timeline')
+    }
+  }
+
+  componentDidMount() {
+    if (API.getUserSession()) {
+      this.props.history.push('/timeline')
+    }
+  }
+
   render() {
     return (
       <Container>
-        <LoginForm isLoading={this.props.isLoading}>
+        <LoginForm isLoading={this.props.isLoading} errors={this.props.formErrors}>
           <SimpleInput
             label="Email:"
             placeholder="Ej. user@laboratoria.la"
             onChangeText={this.handleUsernameChange}
             value={this.props.username.value}
             errors={this.props.username.errors}
+            type="text"
           />
           <SimpleInput
             label="Contraseña"
@@ -37,7 +58,10 @@ class LoginScreen extends Component {
             errors={this.props.password.errors}
             type="password"
           />
-          <FlatButton onPress={() => this.props.attemptLogin('user@laboratoria.la', '123456')} label="iniciar sesión" />
+          <FlatButton
+            onPress={this.handleLoginAttempt}
+            label="iniciar sesión"
+          />
         </LoginForm>
       </Container>
     )
@@ -48,19 +72,25 @@ LoginScreen.propTypes = {
   passwordInputChange: PropTypes.func.isRequired,
   usernameInputChange: PropTypes.func.isRequired,
   attemptLogin: PropTypes.func,
-  username: PropTypes.string,
-  password: PropTypes.string,
+  username: PropTypes.object,
+  password: PropTypes.object,
   isLoading: PropTypes.bool,
 }
 
 const mapStateToProps = (state) => {
-  const { loginForm: { username, password, isLoading } } = state.UserAuthentication
-  console.log(username, password)
+  const { loginForm: { username, password, isLoading, errors }, user } = state.UserAuthentication
   return {
     username,
     password,
-    isLoading
+    isLoading,
+    user,
+    formErrors: errors
   }
 }
 
-export default connect(mapStateToProps, { passwordInputChange, usernameInputChange, attemptLogin })(LoginScreen)
+export default connect(
+  mapStateToProps, {
+    passwordInputChange,
+    usernameInputChange,
+    attemptLogin
+  })(LoginScreen)

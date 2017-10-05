@@ -6,6 +6,7 @@ import {
   LOGIN_SUBMIT_FAILURE,
   LOGIN_SUBMIT_SUCCESS
 } from '../actions/types'
+import API from '../api'
 
 const INITIAL_STATE = {
   loginForm: {
@@ -42,12 +43,27 @@ export default (state = INITIAL_STATE, action) => {
         }
       }
     case LOGIN_SUBMIT_SUCCESS:
+      const response = action.payload.data.payload
+      if (typeof response === 'object') {
+        // save session in localstorage
+        API.saveUserSession(response.token)
+        return {
+          ...state,
+          user: response,
+          loginForm: {
+            ...state.loginForm,
+            isLoading: false,
+            errors: []
+          }
+        }
+      }
       return {
         ...state,
-        user: action.payload.user !== null ? action.payload.user : null,
+        user: null,
         loginForm: {
           ...state.loginForm,
-          isLoading: false
+          isLoading: false,
+          errors: ['Contraseña o usuario inválidos.']
         }
       }
     case LOGIN_SUBMIT_FAILURE:

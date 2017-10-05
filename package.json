@@ -34,6 +34,7 @@
     "axios": "^0.16.2",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.5",
+    "idb": "^2.0.4",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -44,6 +45,6 @@
     "validator": "^9.0.0"
   },
   "scripts": {
-    "start": "webpack-dev-server -p"
+    "start": "webpack-dev-server"
   }
 }

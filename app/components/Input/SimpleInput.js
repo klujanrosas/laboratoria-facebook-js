@@ -36,7 +36,7 @@ class SimpleInput extends Component {
 SimpleInput.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
-  type: PropTypes.oneOfType(['text', 'password']),
+  type: PropTypes.oneOf(['text', 'password']),
   errors: PropTypes.array,
   onChangeText: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired

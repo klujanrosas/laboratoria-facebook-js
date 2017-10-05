@@ -3,11 +3,12 @@ import React from 'react'
 const FlatButton = ({ label = 'label', onPress = () => console.log('button pressed') }) => {
   return (
     <div
+      tabIndex={-3}
       role="button"
-      class="login-form__submit-button"
+      className="login-form__submit-button"
       onClick={onPress}
     >
-      <p class="submit-button__label">
+      <p className="submit-button__label">
         {label.toUpperCase()}
       </p>
     </div>
