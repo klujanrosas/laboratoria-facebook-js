@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { passwordInputChange, usernameInputChange } from '../actions'
+import { passwordInputChange, usernameInputChange, attemptLogin } from '../actions'
 
 import { Container } from '../components/Container'
 import { LoginForm } from '../components/Form'
@@ -21,7 +21,7 @@ class LoginScreen extends Component {
   render() {
     return (
       <Container>
-        <LoginForm>
+        <LoginForm isLoading={this.props.isLoading}>
           <SimpleInput
             label="Email:"
             placeholder="Ej. user@laboratoria.la"
@@ -37,7 +37,7 @@ class LoginScreen extends Component {
             errors={this.props.password.errors}
             type="password"
           />
-          <FlatButton label="iniciar sesión" />
+          <FlatButton onPress={() => this.props.attemptLogin('user@laboratoria.la', '123456')} label="iniciar sesión" />
         </LoginForm>
       </Container>
     )
@@ -47,16 +47,20 @@ class LoginScreen extends Component {
 LoginScreen.propTypes = {
   passwordInputChange: PropTypes.func.isRequired,
   usernameInputChange: PropTypes.func.isRequired,
+  attemptLogin: PropTypes.func,
   username: PropTypes.string,
-  password: PropTypes.string
+  password: PropTypes.string,
+  isLoading: PropTypes.bool,
 }
 
 const mapStateToProps = (state) => {
-  const { loginForm: { username, password } } = state.UserAuthentication
+  const { loginForm: { username, password, isLoading } } = state.UserAuthentication
+  console.log(username, password)
   return {
     username,
-    password
+    password,
+    isLoading
   }
 }
 
-export default connect(mapStateToProps, { passwordInputChange, usernameInputChange })(LoginScreen)
+export default connect(mapStateToProps, { passwordInputChange, usernameInputChange, attemptLogin })(LoginScreen)

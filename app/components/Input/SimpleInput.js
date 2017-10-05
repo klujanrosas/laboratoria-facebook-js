@@ -11,7 +11,7 @@ class SimpleInput extends Component {
       onChangeText,
       value
     } = this.props
-    
+
     return (
       <div className="login-form__input-container">
         <p className="input-container__label">

@@ -6,6 +6,7 @@ const extractCSS = new ExtractTextPlugin({ filename: 'styles.css' })
 
 module.exports = {
   entry: [
+    'babel-polyfill',
     './app/index.js'
   ],
   output: {
