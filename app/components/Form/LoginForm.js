@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class LoginForm extends React.Component {
   render() {
@@ -9,6 +10,10 @@ class LoginForm extends React.Component {
       </div>
     )
   }
+}
+
+LoginForm.propTypes = {
+  children: PropTypes.any
 }
 
 export default LoginForm

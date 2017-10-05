@@ -1,3 +1,6 @@
+@import './mixins.scss';
+@import './fonts.scss';
+
 * {
   margin: 0;
   padding: 0;
@@ -29,7 +32,21 @@ html, body {
   align-items: center;
   justify-content: center;
   box-shadow: 0 3px 3px #2E4677;
-  /* border-radius: 5px; */
+  @include small {
+    width: 90%;
+  }
+  @include medium {
+    width: 90%;
+  }
+  @include large {
+    width: 90%;
+  }
+  @include tablet {
+    width: 90%;
+  }
+  @include small-desktop {
+    width: 60%;
+  }
 }
 
 .login-form__input-container {
@@ -54,7 +71,7 @@ html, body {
   justify-content: flex-start;
   font-size: 1rem;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: white;
 }
 
@@ -64,7 +81,8 @@ html, body {
   flex: 1;
   width: 100%;
   font-size: 1.2rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
   color: white;
   background: #3B5998;
   border: 0;  
@@ -78,6 +96,7 @@ html, body {
   }
   &::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.5);
+    font-weight: 300;
   }
 }
 
@@ -125,7 +144,7 @@ html, body {
   color: #E0E2EF;
   font-size: 1rem;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   transition: color 0.2s ease-in;
   &:hover {
     color: #3B5998;

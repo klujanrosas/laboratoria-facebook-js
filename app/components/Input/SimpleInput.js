@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class SimpleInput extends Component {
   render() {
@@ -6,7 +7,9 @@ class SimpleInput extends Component {
       label = 'label',
       placeholder = 'placeholder',
       type = 'text',
-      errors = []
+      errors = [],
+      onChangeText,
+      value
     } = this.props
     
     return (
@@ -15,17 +18,28 @@ class SimpleInput extends Component {
           {label}
         </p>
         <input
-          autofocus
+          // autoFocus
+          onChange={onChangeText}
           placeholder={placeholder}
           type={type}
-          class="input-container__text-input"
+          className="input-container__text-input"
+          value={value}
         />
         <div className="input-container__field-error">
-          {this.props.errors && this.props.errors.map(error => <p>{error}</p>)}
+          {errors.length > 0 && this.props.errors.map(error => <p>{error}</p>)}
         </div>
       </div>
     )
   }
+}
+
+SimpleInput.propTypes = {
+  label: PropTypes.string,
+  placeholder: PropTypes.string,
+  type: PropTypes.oneOfType(['text', 'password']),
+  errors: PropTypes.array,
+  onChangeText: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired
 }
 
 export default SimpleInput
