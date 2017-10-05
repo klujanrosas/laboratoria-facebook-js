@@ -30,8 +30,8 @@ export const attemptRequestDataFromToken = () => {
     dispatch(requestDataFromToken())
     try {
       const retrievedUserToken = API.getUserSession()
-      const data = await API.getUserDataFromToken(retrievedUserToken)
-      dispatch(requestDataFromTokenSuccess(data))
+      const response = await API.getUserDataFromToken(retrievedUserToken)
+      dispatch(requestDataFromTokenSuccess(response.data))
     } catch (error) {
       dispatch(requestDataFromTokenFailure(error.message))
     }

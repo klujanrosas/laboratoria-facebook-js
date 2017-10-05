@@ -1,0 +1,26 @@
+.label {
+  font-size: 18;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  &_xs {
+    font-size: 0.5rem;
+  }
+  &_s {
+    font-size: 0.7rem;
+  }
+  &_m {
+    font-size: 1rem;
+  }
+  &_l {
+    font-size: 1.2rem;
+  }
+  &_xl {
+    font-size: 1.5rem;
+  }
+  &_white {
+    color: white;
+  }
+  &_oceanblue {
+    color: #4267B2
+  } 
+}

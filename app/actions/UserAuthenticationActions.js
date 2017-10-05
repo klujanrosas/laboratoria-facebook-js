@@ -4,8 +4,12 @@ import {
   USERNAME_INPUT_CHANGE,
   LOGIN_SUBMIT,
   LOGIN_SUBMIT_FAILURE,
-  LOGIN_SUBMIT_SUCCESS
+  LOGIN_SUBMIT_SUCCESS,
+  USER_LOGOUT,
+  USER_LOGOUT_FAILURE,
+  USER_LOGOUT_SUCCESS
 } from './types'
+
 
 export const passwordInputChange = (value) => {
   return {
@@ -56,5 +60,30 @@ export const attemptLogin = (username, password) => {
   }
   return dispatch => {
     dispatch(loginSubmitFailure('Primero arregle los errores mencionados.'))
+  }
+}
+
+export const logout = () => {
+  return {
+    type: USER_LOGOUT
+  }
+}
+
+export const logoutSuccess = () => {
+  return {
+    type: USER_LOGOUT_SUCCESS
+  }
+}
+
+export const logoutFailure = () => {
+  return {
+    type: USER_LOGOUT_FAILURE
+  }
+}
+
+export const attemptLogout = () => {
+  return (dispatch) => {
+    API.clearUserSession()
+    dispatch(logoutSuccess())
   }
 }

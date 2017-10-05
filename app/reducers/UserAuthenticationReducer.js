@@ -4,7 +4,8 @@ import {
   USERNAME_INPUT_CHANGE,
   LOGIN_SUBMIT,
   LOGIN_SUBMIT_FAILURE,
-  LOGIN_SUBMIT_SUCCESS
+  LOGIN_SUBMIT_SUCCESS,
+  USER_LOGOUT_SUCCESS
 } from '../actions/types'
 import API from '../api'
 
@@ -34,6 +35,11 @@ const validate = (payload) => {
 export default (state = INITIAL_STATE, action) => {
   const { type, payload } = action
   switch (type) {
+    case USER_LOGOUT_SUCCESS:
+      return {
+        ...state,
+        user: null
+      }
     case LOGIN_SUBMIT:
       return {
         ...state,

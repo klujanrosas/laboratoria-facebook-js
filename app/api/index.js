@@ -8,6 +8,7 @@ export default {
   },
   getUserDataFromToken: token => axios.post(`${rootUrl}/user`, { token }),
   saveUserSession: userToken => sessionStorage.setItem('LaboratoriaUserSession', userToken),
-  getUserSession: () => sessionStorage.getItem('LaboratoriaUserSession')
+  getUserSession: () => sessionStorage.getItem('LaboratoriaUserSession'),
+  clearUserSession: () => sessionStorage.clear()
 }
 
