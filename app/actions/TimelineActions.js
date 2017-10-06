@@ -41,13 +41,14 @@ export const attemptRequestDataFromToken = () => {
   }
 }
 
-export const addPost = ({ type, content }) => {
-  console.log('action creator addPost', { type, content })
+export const addPost = ({ type, content, image = null }) => {
+  console.log('action creator addPost', { type, content, image })
   return {
     type: ADD_POST,
     payload: {
       type,
       content,
+      image,
       id: `${type}${content}${new Date().getUTCMilliseconds() + Math.random()}` // don't do this, it's ugly and collisions can happen, then the DOM will go nuts
     }
   }

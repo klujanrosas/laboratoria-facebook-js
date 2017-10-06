@@ -67,7 +67,7 @@ TimelineScreen.propTypes = {
   attemptRequestDataFromToken: PropTypes.func,
   attemptLogout: PropTypes.func,
   userPosts: PropTypes.object,
-  userInfo: PropTypes.object,
+  userInfo: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   user: PropTypes.object,
 }
 

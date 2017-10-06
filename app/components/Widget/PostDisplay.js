@@ -47,6 +47,7 @@ class PostDisplay extends Component {
     if (!this.state.editing) {
       return (
         <div className="post-display__content">
+          {!this.props.image ? null : <img alt="Imagen del post" src={this.props.image} /> }
           <p>
             {this.state.innerContent}
           </p>
@@ -56,6 +57,7 @@ class PostDisplay extends Component {
 
     return (
       <div className="post-display__content">
+        {!this.props.image ? null : <img alt="Imagen del post" src={this.props.image} /> }
         <textarea
           onChange={this.handlePostContentChange}
           value={this.state.newInnerContent}
@@ -120,6 +122,7 @@ PostDisplay.propTypes = {
   updatePost: PropTypes.func,
   deletePost: PropTypes.func,
   content: PropTypes.string,
+  image: PropTypes.string,
   id: PropTypes.string
 }
 

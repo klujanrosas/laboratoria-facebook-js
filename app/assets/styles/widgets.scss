@@ -21,7 +21,7 @@
   }
   &__actions {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     padding-left: 5%;
     padding-right: 5%;
     align-items: center;
@@ -31,6 +31,10 @@
     select {
       height: 50px;
       width: 100%;
+    }
+    input[type="file"] {
+      width: 100%;
+      align-self: center;
     }
   }
   &__error {
@@ -94,11 +98,15 @@
     &__content {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-around;
       padding: 3%;
       height: 70%;
       width: 100%;
       background: white;
+      img {
+        max-width: 100px;
+        margin: 0 3% 0 3%;
+      }
       p {
         font-size: 1.5rem;
         line-height: 1.5;
@@ -129,4 +137,44 @@
     width: 100%;
     background: blue;
   }
+}
+
+.image-upload {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.image-upload + label {
+  font-size: 1.5em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  color: #4267B2;
+  border: 2px solid #4267B2;
+  width: 100%;
+  padding: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transition: background 0.2s ease-in-out;
+  svg {
+    width: 1em;
+    height: 1em;
+    fill: #4267B2;
+  }
+}
+
+.image-upload:focus + label,
+.image-upload + label:hover {
+  background: #CCDAF0;
+}
+
+.image-upload + label {
+  cursor: pointer;
 }

@@ -18,6 +18,7 @@ class PostDisplayWidget extends Component {
           id={post.id}
           key={post.id} // don't do this, really
           content={post.content}
+          image={post.image}
         />
       ))
   }
