@@ -13,7 +13,7 @@ class PostDisplayWidget extends Component {
     const { posts } = this.props
     if (!posts) return null
     return posts.filter(post => post.type === this.state.showOfType)
-      .map(post => (
+      .reverse().map(post => (
         <PostDisplay
           id={post.id}
           key={post.id} // don't do this, really

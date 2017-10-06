@@ -73,6 +73,7 @@ class PostCreationWidget extends Component {
         </div>
         <div className="post-creation-widget__actions">
           <input
+            multiple={false}
             className="image-upload"
             id="laboratoria-image-upload"
             type="file"
