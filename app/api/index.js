@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const rootUrl = 'http://localhost:3000/api'
+const rootUrl = 'http://laboratoriademo.kennethlujan.com/api'
 
 export default {
   login: (data) => {
