@@ -75,7 +75,7 @@ LoginScreen.propTypes = {
   username: PropTypes.object,
   password: PropTypes.object,
   isLoading: PropTypes.bool,
-  history: PropTypes.shape,
+  history: PropTypes.object,
   formErrors: PropTypes.array
 }
 

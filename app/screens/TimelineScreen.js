@@ -66,9 +66,9 @@ class TimelineScreen extends Component {
 TimelineScreen.propTypes = {
   attemptRequestDataFromToken: PropTypes.func,
   attemptLogout: PropTypes.func,
-  userPosts: PropTypes.shape,
-  userInfo: PropTypes.shape,
-  user: PropTypes.shape(),
+  userPosts: PropTypes.object,
+  userInfo: PropTypes.object,
+  user: PropTypes.object,
 }
 
 const mapStateToProps = (state) => {
