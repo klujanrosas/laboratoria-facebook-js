@@ -46,7 +46,6 @@ export const loginSubmitFailure = (error) => {
 }
 
 export const attemptLogin = (username, password) => {
-  console.log('attempting login with', { username, password })
   if (username.errors.length === 0 && password.errors.length === 0) {
     return async (dispatch) => {
       dispatch(loginSubmit())

@@ -38,7 +38,6 @@ class TimelineScreen extends Component {
 
   render() {
     if (!this.props.user) {
-      console.log('not logged in')
       return <Redirect to="/" />
     }
 
@@ -74,7 +73,6 @@ TimelineScreen.propTypes = {
 const mapStateToProps = (state) => {
   const { user } = state.UserAuthentication
   const { userInfo, isLoading, errors, userPosts } = state.Timeline
-  console.log(userPosts)
   return {
     user,
     userInfo,

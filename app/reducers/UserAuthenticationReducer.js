@@ -103,7 +103,6 @@ export default (state = INITIAL_STATE, action) => {
         }
       }
     case PASSWORD_INPUT_CHANGE:
-      console.log('pass', action.payload)
       return {
         ...state,
         loginForm: {

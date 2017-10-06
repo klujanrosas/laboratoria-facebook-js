@@ -42,7 +42,6 @@ export const attemptRequestDataFromToken = () => {
 }
 
 export const addPost = ({ type, content, image = null }) => {
-  console.log('action creator addPost', { type, content, image })
   return {
     type: ADD_POST,
     payload: {
@@ -55,7 +54,6 @@ export const addPost = ({ type, content, image = null }) => {
 }
 
 export const updatePost = ({ newContent, id }) => {
-  console.log('action creator updatePost', { id, newContent })
   return {
     type: UPDATE_POST,
     payload: {
@@ -66,7 +64,6 @@ export const updatePost = ({ newContent, id }) => {
 }
 
 export const deletePost = (postId) => {
-  console.log('action creator deletePost', postId)
   return {
     type: DELETE_POST,
     payload: postId

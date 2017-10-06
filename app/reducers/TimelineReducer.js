@@ -58,7 +58,6 @@ export default (state = INITIAL_STATE, action) => {
         isLoading: true
       }
     case REQUEST_DATA_FROM_TOKEN_SUCCESS:
-      console.log('requested user info', action.payload)
       // eslint-disable-next-line no-prototype-builtins
       if (action.payload.hasOwnProperty('token')) {
         // eslint-disable-next-line no-prototype-builtins
