@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const TimelineContent = ({ children }) => {
   return (
@@ -6,6 +7,10 @@ const TimelineContent = ({ children }) => {
       {children}
     </div>
   )
+}
+
+TimelineContent.propTypes = {
+  children: PropTypes.any
 }
 
 export default TimelineContent

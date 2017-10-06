@@ -58,7 +58,7 @@ export const attemptLogin = (username, password) => {
       }
     }
   }
-  return dispatch => {
+  return (dispatch) => {
     dispatch(loginSubmitFailure('Primero arregle los errores mencionados.'))
   }
 }

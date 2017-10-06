@@ -48,6 +48,7 @@ export default (state = INITIAL_STATE, action) => {
           isLoading: true
         }
       }
+    // eslint-disable-next-line no-case-declarations
     case LOGIN_SUBMIT_SUCCESS:
       const response = action.payload.data.payload
       if (typeof response === 'object') {

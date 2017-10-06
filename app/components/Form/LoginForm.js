@@ -19,7 +19,8 @@ class LoginForm extends React.Component {
 
 LoginForm.propTypes = {
   children: PropTypes.any,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  errors: PropTypes.array
 }
 
 export default LoginForm

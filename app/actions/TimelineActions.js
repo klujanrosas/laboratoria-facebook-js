@@ -1,7 +1,9 @@
 import {
   REQUEST_DATA_FROM_TOKEN,
   REQUEST_DATA_FROM_TOKEN_FAILURE,
-  REQUEST_DATA_FROM_TOKEN_SUCCESS
+  REQUEST_DATA_FROM_TOKEN_SUCCESS,
+  ADD_POST,
+  UPDATE_POST
 } from './types'
 import API from '../api'
 
@@ -34,6 +36,29 @@ export const attemptRequestDataFromToken = () => {
       dispatch(requestDataFromTokenSuccess(response.data))
     } catch (error) {
       dispatch(requestDataFromTokenFailure(error.message))
+    }
+  }
+}
+
+export const addPost = ({ type, content }) => {
+  console.log('action creator addPost', { type, content })
+  return {
+    type: ADD_POST,
+    payload: {
+      type,
+      content,
+      id: `${type}${content}${new Date().getUTCMilliseconds() + Math.random()}` // don't do this, it's ugly and collisions can happen, then the DOM will go nuts
+    }
+  }
+}
+
+export const updatePost = ({ newContent, id }) => {
+  console.log('action creator updatePost', { id, newContent })
+  return {
+    type: UPDATE_POST,
+    payload: {
+      id,
+      newContent
     }
   }
 }

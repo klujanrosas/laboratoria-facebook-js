@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import { updatePost } from '../../actions'
 import { FlatButton } from '../Button'
 
 class PostDisplay extends Component {
@@ -11,8 +13,31 @@ class PostDisplay extends Component {
 
     this.state = {
       innerContent: content,
+      newInnerContent: content,
       editing: false
     }
+  }
+
+  handlePostDeletion = () => {
+    console.log('eliminar post con id', this.props.id)
+  }
+
+  handlePostUpdate = () => {
+    this.setState({ editing: false })
+    this.props.updatePost({
+      id: this.props.id,
+      newContent: this.state.newInnerContent
+    })
+    this.setState({ innerContent: this.state.newInnerContent })
+  }
+
+  handlePostEditCancel = () => {
+    this.setState({ newInnerContent: this.state.innerContent })
+    this.setState({ editing: false })
+  }
+
+  handlePostContentChange = (e) => {
+    this.setState({ newInnerContent: e.nativeEvent.target.value })
   }
 
   renderEditOrDisplayContent = () => {
@@ -28,7 +53,10 @@ class PostDisplay extends Component {
 
     return (
       <div className="post-display__content">
-        <textarea value={this.state.innerContent} />
+        <textarea
+          onChange={this.handlePostContentChange}
+          value={this.state.newInnerContent}
+        />
       </div>
     )
   }
@@ -45,7 +73,7 @@ class PostDisplay extends Component {
             labelColor="white"
           />
           <FlatButton
-            onPress={() => this.setState({ editing: false })}
+            onPress={this.handlePostDeletion}
             label="Eliminar"
             size="m"
             color="red"
@@ -58,14 +86,14 @@ class PostDisplay extends Component {
     return (
       <div className="post-display__actions">
         <FlatButton
-          onPress={() => this.setState({ editing: false })}
+          onPress={this.handlePostUpdate}
           label="Guardar Cambios"
           size="m"
           color="green"
           labelColor="white"
         />
         <FlatButton
-          onPress={() => this.setState({ editing: false })}
+          onPress={this.handlePostEditCancel}
           label="Cancelar cambios"
           size="m"
           color="red"
@@ -76,12 +104,6 @@ class PostDisplay extends Component {
   }
 
   render() {
-    const {
-      onDelete,
-      onEdit,
-      content = 'Lorem ipsum'
-    } = this.props
-
     return (
       <div className="post-display">
         {this.renderEditOrDisplayContent()}
@@ -92,9 +114,9 @@ class PostDisplay extends Component {
 }
 
 PostDisplay.propTypes = {
-  onDelete: PropTypes.func,
-  onEdit: PropTypes.func,
-  content: PropTypes.string
+  updatePost: PropTypes.func,
+  content: PropTypes.string,
+  id: PropTypes.string
 }
 
-export default PostDisplay
+export default connect(null, { updatePost })(PostDisplay)

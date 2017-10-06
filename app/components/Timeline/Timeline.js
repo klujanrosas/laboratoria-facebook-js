@@ -1,14 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
-class Timeline extends Component {
-  render() {
-    const { children } = this.props
-    return (
-      <div className="timeline">
-        {children}
-      </div>
-    )
-  }
+const Timeline = ({ children }) => {
+  return (
+    <div className="timeline">
+      {children}
+    </div>
+  )
+}
+
+Timeline.propTypes = {
+  children: PropTypes.any
 }
 
 export default Timeline

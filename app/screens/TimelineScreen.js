@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -12,8 +13,7 @@ import { PostCreationWidget, PostDisplayWidget } from '../components/Widget'
 
 
 class TimelineScreen extends Component {
-
-  componentDidMount() {    
+  componentDidMount() {
     this.props.attemptRequestDataFromToken()
   }
 
@@ -26,15 +26,14 @@ class TimelineScreen extends Component {
           size="m"
         />
       )
-    } else {
-      return (
-        <Label
-          content={this.props.userInfo.name}
-          color="white"
-          size="xl"
-        />
-      )
     }
+    return (
+      <Label
+        content={this.props.userInfo.name}
+        color="white"
+        size="xl"
+      />
+    )
   }
 
   render() {
@@ -55,25 +54,7 @@ class TimelineScreen extends Component {
           </TintedHeader>
           {this.props.userInfo && <TimelineContent>
             <PostCreationWidget />
-            <PostDisplayWidget posts={[
-              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
-              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
-              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
-              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
-              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
-              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
-              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
-              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
-              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
-              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
-              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
-              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
-              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
-              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
-              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
-              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' }
-            ]}
-            />
+            <PostDisplayWidget posts={this.props.userPosts[this.props.userInfo.token]} />
           </TimelineContent>
           }
         </Timeline>
@@ -82,10 +63,18 @@ class TimelineScreen extends Component {
   }
 }
 
-const mapStateToProps = state => {
+TimelineScreen.propTypes = {
+  attemptRequestDataFromToken: PropTypes.func,
+  attemptLogout: PropTypes.func,
+  userPosts: PropTypes.shape,
+  userInfo: PropTypes.shape,
+  user: PropTypes.shape(),
+}
+
+const mapStateToProps = (state) => {
   const { user } = state.UserAuthentication
   const { userInfo, isLoading, errors, userPosts } = state.Timeline
-  console.log('userPosts object', userPosts)
+  console.log(userPosts)
   return {
     user,
     userInfo,
@@ -95,5 +84,11 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { attemptLogout, attemptRequestDataFromToken })(TimelineScreen)
+export default connect(
+  mapStateToProps,
+  {
+    attemptLogout,
+    attemptRequestDataFromToken
+  }
+)(TimelineScreen)
 

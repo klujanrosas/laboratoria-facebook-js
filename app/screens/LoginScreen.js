@@ -11,6 +11,18 @@ import { FlatButton } from '../components/Button'
 
 
 class LoginScreen extends Component {
+  componentDidMount() {
+    if (API.getUserSession()) {
+      this.props.history.push('/timeline')
+    }
+  }
+
+  componentWillUpdate() {
+    if (API.getUserSession()) {
+      this.props.history.push('/timeline')
+    }
+  }
+
   handlePasswordChange = (e) => {
     this.props.passwordInputChange(e.nativeEvent.target.value)
   }
@@ -24,18 +36,6 @@ class LoginScreen extends Component {
       this.props.username,
       this.props.password,
     )
-  }
-
-  componentWillUpdate() {
-    if (API.getUserSession()) {
-      this.props.history.push('/timeline')
-    }
-  }
-
-  componentDidMount() {
-    if (API.getUserSession()) {
-      this.props.history.push('/timeline')
-    }
   }
 
   render() {
@@ -75,6 +75,8 @@ LoginScreen.propTypes = {
   username: PropTypes.object,
   password: PropTypes.object,
   isLoading: PropTypes.bool,
+  history: PropTypes.shape,
+  formErrors: PropTypes.array
 }
 
 const mapStateToProps = (state) => {
