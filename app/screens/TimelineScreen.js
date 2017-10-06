@@ -84,12 +84,14 @@ class TimelineScreen extends Component {
 
 const mapStateToProps = state => {
   const { user } = state.UserAuthentication
-  const { userInfo, isLoading, errors } = state.Timeline
+  const { userInfo, isLoading, errors, userPosts } = state.Timeline
+  console.log('userPosts object', userPosts)
   return {
     user,
     userInfo,
     isLoading,
-    errors
+    errors,
+    userPosts
   }
 }
 

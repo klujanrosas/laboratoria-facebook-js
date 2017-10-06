@@ -3,14 +3,11 @@ import {
   REQUEST_DATA_FROM_TOKEN_SUCCESS,
   REQUEST_DATA_FROM_TOKEN_FAILURE
 } from '../actions/types'
-import {
-  REHYDRATE
-} from 'redux-persist/constants'
 
 const INITIAL_STATE = {
   isLoading: false,
   userInfo: null,
-  userPosts: []
+  userPosts: {}
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -27,6 +24,10 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         userInfo: action.payload,
         isLoading: false,
+        userPosts: {
+          ...state.userPosts,
+          [action.payload.token]: []
+        },
         errors: []
       }
     case REQUEST_DATA_FROM_TOKEN_FAILURE:
