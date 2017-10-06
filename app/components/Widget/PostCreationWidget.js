@@ -8,7 +8,7 @@ import { FlatButton } from '../Button'
 class PostCreationWidget extends Component {
   state = {
     postText: '',
-    postType: 'amigos',
+    postType: 'publico',
     error: null
   }
 
@@ -34,6 +34,10 @@ class PostCreationWidget extends Component {
       this.props.addPost({
         type: this.state.postType,
         content: this.state.postText
+      })
+      this.setState({
+        postText: '',
+        postType: 'publico'
       })
     }
   }

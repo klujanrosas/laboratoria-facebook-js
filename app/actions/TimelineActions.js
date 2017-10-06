@@ -3,7 +3,8 @@ import {
   REQUEST_DATA_FROM_TOKEN_FAILURE,
   REQUEST_DATA_FROM_TOKEN_SUCCESS,
   ADD_POST,
-  UPDATE_POST
+  UPDATE_POST,
+  DELETE_POST
 } from './types'
 import API from '../api'
 
@@ -62,3 +63,12 @@ export const updatePost = ({ newContent, id }) => {
     }
   }
 }
+
+export const deletePost = (postId) => {
+  console.log('action creator deletePost', postId)
+  return {
+    type: DELETE_POST,
+    payload: postId
+  }
+}
+

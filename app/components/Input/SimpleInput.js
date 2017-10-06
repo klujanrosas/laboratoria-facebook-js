@@ -18,7 +18,6 @@ class SimpleInput extends Component {
           {label}
         </p>
         <input
-          // autoFocus
           onChange={onChangeText}
           placeholder={placeholder}
           type={type}
@@ -26,7 +25,7 @@ class SimpleInput extends Component {
           value={value}
         />
         <div className="input-container__field-error">
-          {errors.length > 0 && this.props.errors.map(error => <p>{error}</p>)}
+          {errors.length > 0 && this.props.errors.map(error => <p key={error}>{error}</p>)}
         </div>
       </div>
     )

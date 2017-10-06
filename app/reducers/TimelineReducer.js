@@ -3,7 +3,8 @@ import {
   REQUEST_DATA_FROM_TOKEN_SUCCESS,
   REQUEST_DATA_FROM_TOKEN_FAILURE,
   ADD_POST,
-  UPDATE_POST
+  UPDATE_POST,
+  DELETE_POST
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -15,6 +16,16 @@ const INITIAL_STATE = {
 let posts
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case DELETE_POST:
+      posts = state.userPosts[state.userInfo.token].slice(0)
+      posts = posts.filter(post => post.id !== action.payload)
+      return {
+        ...state,
+        userPosts: {
+          ...state.userPosts,
+          [state.userInfo.token]: posts
+        }
+      }
     case UPDATE_POST:
       posts = state.userPosts[state.userInfo.token].slice(0)
       posts = posts.map((post) => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { updatePost } from '../../actions'
+import { updatePost, deletePost } from '../../actions'
 import { FlatButton } from '../Button'
 
 class PostDisplay extends Component {
@@ -19,7 +19,10 @@ class PostDisplay extends Component {
   }
 
   handlePostDeletion = () => {
-    console.log('eliminar post con id', this.props.id)
+    // eslint-disable-next-line no-alert
+    if (confirm('Segur@ de eliminar este post? Es irrecuperable!')) {
+      this.props.deletePost(this.props.id)
+    }
   }
 
   handlePostUpdate = () => {
@@ -115,8 +118,9 @@ class PostDisplay extends Component {
 
 PostDisplay.propTypes = {
   updatePost: PropTypes.func,
+  deletePost: PropTypes.func,
   content: PropTypes.string,
   id: PropTypes.string
 }
 
-export default connect(null, { updatePost })(PostDisplay)
+export default connect(null, { updatePost, deletePost })(PostDisplay)

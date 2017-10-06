@@ -11,7 +11,7 @@ class LoginForm extends React.Component {
         <figure className="back-face">
           <p>INICIANDO SESIÓN...</p>
         </figure>
-        {this.props.errors && this.props.errors.map(error => <p className="login-form__error">{error}</p>)}
+        {this.props.errors && this.props.errors.map(error => <p key={error} className="login-form__error">{error}</p>)}
       </div>
     )
   }

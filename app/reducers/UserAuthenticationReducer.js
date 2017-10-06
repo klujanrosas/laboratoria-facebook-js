@@ -45,7 +45,8 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         loginForm: {
           ...state.loginForm,
-          isLoading: true
+          isLoading: true,
+          errors: []
         }
       }
     // eslint-disable-next-line no-case-declarations
@@ -59,6 +60,14 @@ export default (state = INITIAL_STATE, action) => {
           user: response,
           loginForm: {
             ...state.loginForm,
+            username: {
+              ...state.loginForm.username,
+              value: ''
+            },
+            password: {
+              ...state.loginForm.password,
+              value: ''
+            },
             isLoading: false,
             errors: []
           }
@@ -94,13 +103,14 @@ export default (state = INITIAL_STATE, action) => {
         }
       }
     case PASSWORD_INPUT_CHANGE:
+      console.log('pass', action.payload)
       return {
         ...state,
         loginForm: {
           ...state.loginForm,
           password: {
             ...state.loginForm.password,
-            value: payload
+            value: payload,
           }
         }
       }

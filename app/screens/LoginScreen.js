@@ -72,8 +72,8 @@ LoginScreen.propTypes = {
   passwordInputChange: PropTypes.func.isRequired,
   usernameInputChange: PropTypes.func.isRequired,
   attemptLogin: PropTypes.func,
-  username: PropTypes.object,
-  password: PropTypes.object,
+  username: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  password: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   isLoading: PropTypes.bool,
   history: PropTypes.object,
   formErrors: PropTypes.array
