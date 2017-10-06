@@ -53,10 +53,29 @@ class TimelineScreen extends Component {
               onPress={() => this.props.attemptLogout()}
             />
           </TintedHeader>
-          <TimelineContent>
+          {this.props.userInfo && <TimelineContent>
             <PostCreationWidget />
-            <PostDisplayWidget />
+            <PostDisplayWidget posts={[
+              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
+              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
+              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
+              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
+              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
+              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
+              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
+              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
+              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
+              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
+              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
+              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
+              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
+              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
+              { type: 'friends', content: 'FRIENDS_Hoy el Laucha tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' },
+              { type: 'public', content: 'PUBLIC_Hoy Gastón tierniza un Matambre de Res en nuestro Horno Tromen y lo termina en la parrilla con unos agregados DELUXE por encima. ¡Una combinación explosiva de sabores!' }
+            ]}
+            />
           </TimelineContent>
+          }
         </Timeline>
       </Container>
     )

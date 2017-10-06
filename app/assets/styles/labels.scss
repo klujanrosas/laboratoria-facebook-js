@@ -19,8 +19,41 @@
   }
   &_white {
     color: white;
+    &:hover {
+      color: white !important;
+    }
   }
   &_oceanblue {
     color: #4267B2
   } 
+}
+
+.login-form__submit-button {
+  &_xs {
+    width: 6.3% !important;
+  }
+  &_s {
+    width: 13.25% !important;
+  }
+  &_m {
+    width: 25% !important;
+  }
+  &_l {
+    width: 50% !important;
+  }
+  &_xl {
+    width: 100% !important;
+  }
+  &_white {
+    background: white;
+  }
+  &_oceanblue {
+    background: #4267B2 !important;
+  }
+  &_green {
+    background: #6CAC6C !important;
+  }
+  &_red {
+    background: #AC6C75 !important;
+  }
 }

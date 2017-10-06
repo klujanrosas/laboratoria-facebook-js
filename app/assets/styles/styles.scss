@@ -164,8 +164,8 @@ html, body {
   height: 50px;
   border: 1px solid white;
   background: #3B5998;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  // margin-top: 15px;
+  // margin-bottom: 15px;
   transition: background 0.25s ease;
   &:hover {
     background: #E0E2EF;
@@ -202,7 +202,7 @@ html, body {
   box-shadow: 0 3px 3px #3A414E;
   &__header {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     width: 100%;
     height: 15%;
     background: #4267B2;
