@@ -34,6 +34,7 @@
     "axios": "^0.16.2",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.5",
+    "express": "^4.16.1",
     "idb": "^2.0.4",
     "localforage": "^1.5.0",
     "prop-types": "^15.6.0",
@@ -47,7 +48,9 @@
     "validator": "^9.0.0"
   },
   "scripts": {
-    "start": "webpack-dev-server",
+    "build": "webpack -p",
+    "start": "node server.js",
+    "dev": "webpack-dev-server",
     "lint": "eslint app"
   }
 }
